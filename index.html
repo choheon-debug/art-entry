@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<title>공모전 원서</title>
+<meta name="description" content="내 정보·작품을 한 번 저장해 두고 공모전 원서를 파일로 만들기">
+<meta name="theme-color" content="#f3f4f6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="공모전 원서">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>
+/* 건강 레시피 앱과 같은 모양: 회색 바탕, 둥근 흰 카드, 색깔 버튼 */
+:root{
+  --bg:#f3f4f6; --card:#fff; --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb; --soft:#f9fafb;
+  --blue:#3b82f6; --green:#22c55e; --orange:#f97316; --pink:#ec4899; --purple:#a855f7; --indigo:#6366f1; --teal:#14b8a6; --gray:#6b7280; --danger:#dc2626;
+  --shadow:0 10px 15px -3px rgb(0 0 0 / .1),0 4px 6px -2px rgb(0 0 0 / .05);
+  --body:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-text-size-adjust:100%}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+[hidden]{display:none!important}
+.wrap{max-width:34rem;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 12px) max(12px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 96px) max(12px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:12px}
+header{text-align:center;padding:6px 44px;position:relative}
+header h1{margin:0;font-size:1.7rem;font-weight:800}
+header p{margin:4px 0 0;font-size:.85rem;color:var(--muted)}
+.gear{position:absolute;right:0;top:4px;width:40px;height:40px;border:0;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgb(0 0 0 / .08);font-size:1.15rem}
+.card{background:var(--card);border-radius:1.5rem;box-shadow:var(--shadow);padding:1rem}
+.t{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0 0 8px;font-weight:800;font-size:1.05rem}
+.t span,.t button.link{font-weight:400;font-size:.82rem;color:var(--muted)}
+.link{border:0;background:none;color:var(--indigo)!important;font-weight:700!important;padding:0}
+.sm{font-size:.82rem;color:var(--muted)}
+.lab{display:block;font-size:.82rem;font-weight:700;margin:10px 0 4px}
+.inp{width:100%;min-width:0;padding:10px 12px;border:1px solid #d1d5db;border-radius:10px;font-size:1rem;background:#fff}
+.inp:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgb(99 102 241 / .15)}
+textarea.inp{resize:vertical;min-height:4rem;line-height:1.5}
+.g2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.btn{border:0;border-radius:12px;font-weight:700;color:#fff;padding:11px 12px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:.95rem;width:100%}
+.btn:disabled{opacity:.5}
+.b-blue{background:var(--blue)}.b-green{background:var(--green)}.b-orange{background:var(--orange)}.b-pink{background:var(--pink)}.b-purple{background:var(--purple)}.b-indigo{background:var(--indigo)}.b-teal{background:var(--teal)}.b-gray{background:#eef0f3;color:var(--ink)}.b-kakao{background:#fee500;color:#3c1e1e}.b-red{background:#fff;color:var(--danger);box-shadow:inset 0 0 0 1px #fecaca}
+.mt{margin-top:8px}
+.row{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);padding:9px 0}
+.row:first-of-type{border-top:0}
+.row .main{flex:1;min-width:0}
+.row .main b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.thumb{width:64px;height:50px;border-radius:8px;object-fit:cover;flex:none;background:#eef0f3;display:grid;place-items:center;color:var(--muted);font-size:.75rem}
+.face{width:72px;height:94px;border-radius:10px;object-fit:cover;flex:none;background:#eef0f3;display:grid;place-items:center;color:var(--muted);font-size:.75rem;text-align:center}
+.tag{display:inline-block;font-size:.7rem;font-weight:800;border-radius:7px;padding:2px 7px;background:#eef2ff;color:#3730a3;margin:2px 3px 0 0}
+.tag.g{background:#dcfce7;color:#15803d}.tag.o{background:#ffedd5;color:#c2410c}.tag.r{background:#fee2e2;color:#b91c1c}
+.ck{width:22px;height:22px;border-radius:6px;border:2px solid #d1d5db;background:#fff;flex:none;display:grid;place-items:center;font-size:.8rem;padding:0}
+.ck.on{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.mini{border:0;border-radius:8px;background:#eef0f3;padding:5px 9px;font-size:.78rem;font-weight:700;flex:none}
+.mini.i{background:#eef2ff;color:#3730a3}
+.hint{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:14px;padding:10px 12px;font-size:.85rem;line-height:1.5}
+.ok{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:8px max(12px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 8px) max(12px,env(safe-area-inset-left,0px));pointer-events:none}
+.nav nav{pointer-events:auto;max-width:34rem;margin:0 auto;background:#fff;border-radius:20px;box-shadow:0 4px 18px rgb(0 0 0 / .14);display:grid;grid-template-columns:repeat(4,1fr);padding:5px}
+.nav button{border:0;background:none;border-radius:14px;padding:5px 0;font-size:.76rem;font-weight:700;color:var(--muted);display:flex;flex-direction:column;align-items:center}
+.nav button span{font-size:1.25rem}
+.nav button.on{background:#eef2ff;color:#3730a3}
+.preview{width:100%;border:1px solid #d1d5db;border-radius:8px;background:#fff;display:block}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 90px);transform:translateX(-50%);background:#1f2937;color:#fff;border-radius:12px;padding:11px 16px;font-size:.9rem;z-index:80;max-width:calc(100% - 32px);text-align:center}
+.modal{position:fixed;inset:0;background:rgb(0 0 0 / .5);z-index:50;display:flex;align-items:center;justify-content:center;padding:max(8px,env(safe-area-inset-top,0px)) 8px max(8px,env(safe-area-inset-bottom,0px))}
+.sheet{background:#fff;border-radius:18px;width:100%;max-width:34rem;max-height:92dvh;display:flex;flex-direction:column;padding:14px 16px}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:8px}
+.sheet-head h3{margin:0;font-size:1.05rem;color:#3730a3}
+.x{border:0;background:none;font-size:1.9rem;line-height:1;color:var(--muted)}
+.sbody{overflow-y:auto;flex:1}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:0;border-radius:999px;padding:6px 12px;font-size:.85rem;font-weight:700;background:#eef0f3;color:var(--muted)}
+.seg button.on{background:var(--indigo);color:#fff}
+@media (min-width:900px){.wrap{max-width:46rem}.nav nav{max-width:46rem}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>🎨 공모전 원서 ✍️</h1>
+    <p>한 번 써 두고, 공모전마다 골라서 내요</p>
+    <button class="gear" id="btnSet" aria-label="설정">⚙</button>
+  </header>
+  <div id="view"></div>
+</main>
+<div class="nav"><nav id="nav"></nav></div>
+
+<script>
+"use strict";
+/* ---------- 저장: 모든 자료는 이 기기에만 ---------- */
+const KEY = "artentry.v1";
+let S = { me: { name: "", branch: "", field: "", address: "", phone: "", email: "", photo: "" }, careers: [], works: [], entries: [], forms: null };
+try { const raw = localStorage.getItem(KEY); if (raw) Object.assign(S, JSON.parse(raw)); } catch {}
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(S)); return true; }
+  catch { toast("저장 공간이 꽉 찼어요. 작품 사진 몇 개를 지우거나 백업 후 정리해 주세요"); return false; }
+}
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
+const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+const md = s => s ? `${+s.slice(5, 7)}/${+s.slice(8, 10)}` : "";
+const safeName = s => String(s || "").replace(/[\\/:*?"<>|]/g, "").replace(/\s+/g, " ").trim();
+function toast(t) { document.querySelector(".toast")?.remove(); const d = document.createElement("div"); d.className = "toast"; d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); }
+async function copy(t, msg = "복사했어요") {
+  try { await navigator.clipboard.writeText(t); }
+  catch { const a = document.createElement("textarea"); a.value = t; document.body.appendChild(a); a.select(); document.execCommand("copy"); a.remove(); }
+  toast(msg);
+}
+
+/** 사진을 줄여서 JPEG data URL로 */
+function shrink(file, max, q = 0.85) {
+  return new Promise((ok, no) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => { const k = Math.min(1, max / Math.max(img.width, img.height)), c = document.createElement("canvas");
+      c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+      const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url); ok(c.toDataURL("image/jpeg", q)); };
+    img.onerror = () => { URL.revokeObjectURL(url); no(new Error("사진을 열 수 없어요")); };
+    img.src = url;
+  });
+}
+function pickImage(max, done) {
+  const i = document.createElement("input"); i.type = "file"; i.accept = "image/*";
+  i.onchange = async () => { const f = i.files[0]; if (!f) return; try { done(await shrink(f, max)); } catch (e) { toast(e.message); } };
+  i.click();
+}
+const dataToFile = (data, name) => { const [h, b] = data.split(","), bin = atob(b), u = new Uint8Array(bin.length); for (let k = 0; k < bin.length; k++) u[k] = bin.charCodeAt(k); return new File([u], name, { type: h.match(/:(.*?);/)[1] }); };
+
+/** 공유 창(카톡·웹하드 앱·메일)으로 보내기, 안 되면 파일로 저장 */
+async function shareFiles(files, title) {
+  if (navigator.canShare?.({ files })) {
+    try { await navigator.share({ files, title }); return "shared"; } catch (e) { if (e.name === "AbortError") return "cancel"; }
+  }
+  for (const f of files) download(f);
+  return "saved";
+}
+function download(f) { const url = URL.createObjectURL(f), a = document.createElement("a"); a.href = url; a.download = f.name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 4000); }
+
+/* ---------- 화면 틀 ---------- */
+let tab = "me";
+const TABS = [["me", "👤", "내 정보"], ["works", "🖼", "작품"], ["entry", "📝", "원서"], ["log", "📋", "접수 기록"]];
+function nav() { $("#nav").innerHTML = TABS.map(([k, e, l]) => `<button class="${tab === k ? "on" : ""}" data-t="${k}"><span>${e}</span>${l}</button>`).join(""); $("#nav").querySelectorAll("button").forEach(b => b.onclick = () => { tab = b.dataset.t; render(); scrollTo(0, 0); }); }
+function render() { nav(); ({ me: viewMe, works: viewWorks, entry: viewEntry, log: viewLog })[tab](); }
+
+/* 작은 창 */
+function modal(title, html, mount) {
+  const w = document.createElement("div"); w.className = "modal";
+  w.innerHTML = `<div class="sheet"><div class="sheet-head"><h3>${esc(title)}</h3><button class="x" aria-label="닫기">×</button></div><div class="sbody">${html}</div></div>`;
+  const close = () => w.remove();
+  w.addEventListener("click", e => { if (e.target === w || e.target.closest(".x")) close(); });
+  document.body.appendChild(w); mount?.(w, close); return close;
+}
+
+/* ---------- 👤 내 정보 ---------- */
+function viewMe() {
+  const m = S.me;
+  $("#view").innerHTML = `
+  <section class="card"><div class="t">👤 내 정보 <span>원서에 그대로 들어가요</span></div>
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <button id="face" style="border:0;background:none;padding:0">${m.photo ? `<img class="face" src="${m.photo}" alt="증명사진">` : `<span class="face">📷<br>증명사진</span>`}</button>
+      <div style="flex:1;min-width:0">
+        <label class="lab" style="margin-top:0">성명</label><input class="inp" data-k="name" value="${esc(m.name)}">
+        <div class="g2"><div><label class="lab">소속지부</label><input class="inp" data-k="branch" value="${esc(m.branch)}" placeholder="예: 한국미협 목포지부"></div>
+        <div><label class="lab">분야</label><input class="inp" data-k="field" value="${esc(m.field)}" placeholder="예: 한국화"></div></div>
+      </div></div>
+    <label class="lab">주소</label><input class="inp" data-k="address" value="${esc(m.address)}">
+    <div class="g2"><div><label class="lab">휴대폰</label><input class="inp" data-k="phone" inputmode="tel" value="${esc(m.phone)}"></div>
+    <div><label class="lab">이메일 (선택)</label><input class="inp" data-k="email" inputmode="email" value="${esc(m.email)}"></div></div>
+    <p class="sm" style="margin:8px 0 0">쓰는 대로 저장돼요. 사진을 누르면 증명사진을 넣거나 바꿀 수 있어요.</p>
+  </section>
+  <section class="card"><div class="t">📜 약력 <span>✓ 표시한 줄이 원서에 기본으로 들어가요</span></div>
+    <div id="cl"></div>
+    <div style="display:flex;gap:8px;margin-top:8px"><input class="inp" id="newc" placeholder="예: 대한민국 미술대전 심사위원"><button class="btn b-indigo" style="width:auto;flex:none" id="addc">추가</button></div>
+  </section>`;
+  $("#view").querySelectorAll("[data-k]").forEach(el => el.oninput = () => { S.me[el.dataset.k] = el.value; save(); });
+  $("#face").onclick = () => pickImage(700, d => { S.me.photo = d; save(); viewMe(); toast("증명사진을 넣었어요"); });
+  drawCareers();
+  const add = () => { const v = $("#newc").value.trim(); if (!v) return; S.careers.push({ id: uid(), text: v, on: true }); save(); $("#newc").value = ""; drawCareers(); };
+  $("#addc").onclick = add; $("#newc").onkeydown = e => { if (e.key === "Enter" && !e.isComposing) add(); };
+}
+function drawCareers() {
+  const el = $("#cl");
+  el.innerHTML = S.careers.length ? S.careers.map((c, i) => `<div class="row"><button class="ck ${c.on ? "on" : ""}" data-on="${i}" aria-label="원서에 넣기">${c.on ? "✓" : ""}</button>
+    <span class="main" style="font-size:.95rem;${c.on ? "" : "color:var(--muted)"}">${esc(c.text)}</span>
+    <button class="mini" data-up="${i}" ${i ? "" : "disabled"} aria-label="위로">▲</button><button class="mini" data-dn="${i}" ${i < S.careers.length - 1 ? "" : "disabled"} aria-label="아래로">▼</button>
+    <button class="mini" data-ed="${i}">고치기</button></div>`).join("") : `<p class="sm">약력을 한 줄씩 추가해 주세요.</p>`;
+  el.querySelectorAll("[data-on]").forEach(b => b.onclick = () => { const c = S.careers[+b.dataset.on]; c.on = !c.on; save(); drawCareers(); });
+  const sw = (a, b) => { [S.careers[a], S.careers[b]] = [S.careers[b], S.careers[a]]; save(); drawCareers(); };
+  el.querySelectorAll("[data-up]").forEach(b => b.onclick = () => sw(+b.dataset.up, +b.dataset.up - 1));
+  el.querySelectorAll("[data-dn]").forEach(b => b.onclick = () => sw(+b.dataset.dn, +b.dataset.dn + 1));
+  el.querySelectorAll("[data-ed]").forEach(b => b.onclick = () => {
+    const i = +b.dataset.ed, c = S.careers[i];
+    const v = prompt("약력 고치기 (비우면 지워요)", c.text);
+    if (v == null) return;
+    if (!v.trim()) S.careers.splice(i, 1); else c.text = v.trim();
+    save(); drawCareers();
+  });
+}
+
+/* ---------- 🖼 작품 ---------- */
+const usedIn = id => S.entries.filter(e => e.workId === id && e.status !== "작성 중");
+function viewWorks() {
+  $("#view").innerHTML = `<section class="card"><div class="t">🖼 작품 ${S.works.length}점 <button class="link" id="addw">＋ 작품 추가</button></div>
+    ${S.works.length ? S.works.map(w => { const u = usedIn(w.id);
+      return `<button class="row" data-w="${w.id}" style="width:100%;border-left:0;border-right:0;border-bottom:0;background:none;text-align:left">
+        ${w.photo ? `<img class="thumb" src="${w.photo}" alt="">` : `<span class="thumb">사진 없음</span>`}
+        <span class="main"><b>${esc(w.title)}</b><span class="sm">${esc([w.material, w.size, w.year && `${w.year}년`].filter(Boolean).join(" · "))}</span><br>
+        ${u.length ? u.slice(0, 2).map(e => `<span class="tag g">${esc(e.contest)} 제출</span>`).join("") : `<span class="tag">아직 안 냄</span>`}</span></button>`; }).join("")
+      : `<p class="sm">작품을 추가해 두면 원서를 만들 때 고르기만 하면 돼요.</p>`}</section>`;
+  $("#addw").onclick = () => editWork();
+  $("#view").querySelectorAll("[data-w]").forEach(b => b.onclick = () => editWork(S.works.find(w => w.id === b.dataset.w)));
+}
+function editWork(w) {
+  const isNew = !w; w = w ? { ...w } : { id: uid(), title: "", material: "", size: "", year: String(new Date().getFullYear()), photo: "" };
+  modal(isNew ? "작품 추가" : "작품 고치기", `
+    <div class="g2"><div><label class="lab" style="margin-top:0">작품명</label><input class="inp" id="wt" value="${esc(w.title)}"></div>
+    <div><label class="lab" style="margin-top:0">제작년도</label><input class="inp" id="wy" inputmode="numeric" value="${esc(w.year)}"></div></div>
+    <div class="g2"><div><label class="lab">재료</label><input class="inp" id="wm" value="${esc(w.material)}" placeholder="예: 종이에 아크릴"></div>
+    <div><label class="lab">규격 (cm)</label><input class="inp" id="ws" value="${esc(w.size)}" placeholder="예: 53×40.9"></div></div>
+    <label class="lab">작품 사진</label>
+    <div id="wp">${w.photo ? `<img src="${w.photo}" style="width:100%;border-radius:10px">` : ""}</div>
+    <button class="btn b-pink mt" id="wpick">📷 작품 사진 ${w.photo ? "바꾸기" : "넣기"}</button>
+    <p class="sm" style="margin:6px 0 0">사진은 원서와 제출용에 맞게 자동으로 줄여서 저장해요 (긴 쪽 1600px).</p>
+    <button class="btn b-indigo mt" id="wsave">저장</button>
+    ${isNew ? "" : `<button class="btn b-red mt" id="wdel">🗑️ 이 작품 지우기</button>`}`, (m, close) => {
+    const ws = m.querySelector("#ws"); ws.onblur = () => { ws.value = ws.value.replace(/\s*[xX*×]\s*/g, "×"); };
+    m.querySelector("#wpick").onclick = () => pickImage(1600, d => { w.photo = d; m.querySelector("#wp").innerHTML = `<img src="${d}" style="width:100%;border-radius:10px">`; });
+    m.querySelector("#wsave").onclick = () => {
+      w.title = m.querySelector("#wt").value.trim(); w.year = m.querySelector("#wy").value.trim(); w.material = m.querySelector("#wm").value.trim(); w.size = ws.value.replace(/\s*[xX*×]\s*/g, "×").trim();
+      if (!w.title) return toast("작품명을 넣어 주세요");
+      const i = S.works.findIndex(x => x.id === w.id); if (i >= 0) S.works[i] = w; else S.works.unshift(w);
+      if (save()) { close(); render(); toast("저장했어요"); }
+    };
+    m.querySelector("#wdel")?.addEventListener("click", () => { if (!confirm("이 작품을 지울까요?")) return; S.works = S.works.filter(x => x.id !== w.id); save(); close(); render(); });
+  });
+}
+
+/* ---------- 📝 원서 ---------- */
+let cur = null;   // 지금 만드는 원서 id
+const entry = () => S.entries.find(e => e.id === cur);
+function newEntry() {
+  const e = { id: uid(), contest: "", workId: S.works[0]?.id ?? "", careers: S.careers.filter(c => c.on).map(c => c.id), created: today(), deadline: "", status: "작성 중", submitted: "", web: { url: "", id: "", pw: "", folder: "" }, memo: "" };
+  S.entries.unshift(e); save(); cur = e.id; tab = "entry"; render();
+}
+function viewEntry() {
+  let e = entry();
+  if (!e) {
+    const drafts = S.entries.filter(x => x.status === "작성 중");
+    $("#view").innerHTML = `<section class="card"><div class="t">📝 원서 만들기</div>
+      <p class="sm" style="margin:0 0 10px">내 정보와 작품을 고르면 원서가 바로 만들어져요.</p>
+      <button class="btn b-indigo" id="ne">＋ 새 원서 만들기</button></section>
+      ${drafts.length ? `<section class="card"><div class="t">작성 중인 원서</div>${drafts.map(d => `<button class="row" data-e="${d.id}" style="width:100%;border-left:0;border-right:0;border-bottom:0;background:none;text-align:left"><span class="main"><b>${esc(d.contest || "(공모전 이름 없음)")}</b><span class="sm">${esc(S.works.find(w => w.id === d.workId)?.title || "")} · ${md(d.created)} 만듦</span></span><span class="sm">›</span></button>`).join("")}</section>` : ""}
+      ${!S.me.name ? `<div class="hint">먼저 👤 내 정보에서 이름과 증명사진을 넣어 주세요.</div>` : ""}`;
+    $("#ne").onclick = newEntry;
+    $("#view").querySelectorAll("[data-e]").forEach(b => b.onclick = () => { cur = b.dataset.e; render(); });
+    return;
+  }
+  const w = S.works.find(x => x.id === e.workId), dup = w ? usedIn(w.id).filter(x => x.id !== e.id) : [];
+  $("#view").innerHTML = `
+  <section class="card"><div class="t">📝 원서 <button class="link" id="back">‹ 목록</button></div>
+    <label class="lab" style="margin-top:0">공모전 이름 (원서 맨 위 제목)</label><input class="inp" id="ec" value="${esc(e.contest)}" placeholder="예: 2026 통합도시 목포·신안교류전">
+    <div class="g2"><div><label class="lab">작품</label><select class="inp" id="ew">${S.works.map(x => `<option value="${x.id}" ${x.id === e.workId ? "selected" : ""}>${esc(x.title)}</option>`).join("") || `<option value="">작품을 먼저 추가해 주세요</option>`}</select></div>
+    <div><label class="lab">접수 마감 (선택)</label><input class="inp" id="ed" type="date" value="${esc(e.deadline)}"></div></div>
+    ${dup.length ? `<div class="hint mt">⚠️ 이 작품은 이미 <b>${esc(dup.map(x => x.contest).join(", "))}</b>에 냈어요.</div>` : ""}
+    <label class="lab">이 원서에 넣을 약력</label><div id="ecar"></div>
+  </section>
+  <section class="card"><div class="t">👀 미리보기 <span>A4 한 장</span></div>
+    <canvas id="pv" class="preview" width="1240" height="1754"></canvas>
+    <div class="g2 mt"><button class="btn b-indigo" id="pdf">📄 PDF 저장</button><button class="btn b-purple" id="png">🖼 사진으로 저장</button></div>
+    <button class="btn b-kakao mt" id="send">💬 카톡·메일·웹하드 앱으로 보내기</button>
+  </section>
+  <section class="card"><div class="t">📋 칸별 복사 <span>주최 측 한글(HWP) 양식용</span></div>
+    <p class="sm" style="margin:0 0 6px">한글 파일의 칸을 누른 뒤, 여기서 [복사] → 한글에서 붙여넣기 하세요.</p>
+    <div id="fields"></div>
+    <div class="g2 mt"><button class="btn b-pink" id="gface">📷 증명사진 저장</button><button class="btn b-orange" id="gwork">🖼 작품사진 저장</button></div>
+  </section>
+  <section class="card"><div class="t">🌐 웹하드 도우미 <span>올리기 직전까지 준비</span></div>
+    <label class="lab" style="margin-top:0">웹하드 주소</label><input class="inp" id="wu" value="${esc(e.web.url)}" placeholder="예: www.webhard.co.kr">
+    <div class="g2"><div><label class="lab">아이디</label><input class="inp" id="wi" value="${esc(e.web.id)}" autocapitalize="off"></div>
+    <div><label class="lab">비밀번호</label><input class="inp" id="wpw" value="${esc(e.web.pw)}" autocapitalize="off"></div></div>
+    <label class="lab">올릴 폴더 · 안내</label><input class="inp" id="wf" value="${esc(e.web.folder)}" placeholder="예: 올리기전용 > 한국화">
+    <div class="g2 mt"><button class="btn b-gray" id="cpi">아이디 복사</button><button class="btn b-gray" id="cpp">비밀번호 복사</button></div>
+    <button class="btn b-teal mt" id="openw">🌐 웹하드 열기</button>
+    <button class="btn b-blue mt" id="pack">📦 올릴 파일 한 번에 저장 (원서 PDF·사진, 작품사진)</button>
+    <p class="sm" style="margin:6px 0 0">파일 이름: <b id="fn"></b>…<br>웹하드에서 [올리기] → 방금 저장한 파일들을 고르면 돼요. 아이디·비밀번호는 이 기기에만 저장돼요.</p>
+  </section>
+  <section class="card"><div class="t">✅ 접수 상태</div>
+    <div class="seg" id="st">${["작성 중", "접수 완료", "입선", "특선", "우수상 이상", "낙선"].map(s => `<button class="${e.status === s ? "on" : ""}">${s}</button>`).join("")}</div>
+    <label class="lab">메모</label><textarea class="inp" id="em" placeholder="예: 작품 반입 11/20, 출품료 3만 원">${esc(e.memo)}</textarea>
+    <button class="btn b-red mt" id="del">🗑️ 이 원서 지우기</button>
+  </section>`;
+  const keep = () => save();
+  $("#back").onclick = () => { cur = null; render(); };
+  $("#ec").oninput = ev => { e.contest = ev.target.value; keep(); draw(); fn(); };
+  $("#ew").onchange = ev => { e.workId = ev.target.value; keep(); viewEntry(); };
+  $("#ed").onchange = ev => { e.deadline = ev.target.value; keep(); };
+  const car = $("#ecar");
+  const drawCar = () => {
+    car.innerHTML = S.careers.length ? S.careers.map(c => { const on = e.careers.includes(c.id); return `<div class="row"><button class="ck ${on ? "on" : ""}" data-c="${c.id}">${on ? "✓" : ""}</button><span class="main" style="${on ? "" : "color:var(--muted)"}">${esc(c.text)}</span></div>`; }).join("") : `<p class="sm">👤 내 정보에서 약력을 추가해 주세요.</p>`;
+    car.querySelectorAll("[data-c]").forEach(b => b.onclick = () => { const id = b.dataset.c; e.careers = e.careers.includes(id) ? e.careers.filter(x => x !== id) : S.careers.filter(c => c.id === id || e.careers.includes(c.id)).map(c => c.id); keep(); drawCar(); draw(); fields(); });
+  };
+  drawCar();
+  const draw = () => drawForm($("#pv"), e);
+  const fn = () => { $("#fn").textContent = baseName(e); };
+  draw(); fn();
+  const fields = () => {
+    const ws = S.works.find(x => x.id === e.workId), cs = careerLines(e);
+    const F = [["성명", S.me.name], ["소속지부", S.me.branch], ["분야", S.me.field], ["주소", S.me.address], ["휴대폰", S.me.phone], ["이메일", S.me.email], ["작품명", ws?.title], ["재료", ws?.material], ["규격", ws?.size], ["제작년도", ws?.year && `${ws.year}년`], ["약력", cs.map(x => `- ${x}`).join("\n")]].filter(([, v]) => v);
+    $("#fields").innerHTML = F.map(([k, v], i) => `<div class="row"><span class="sm" style="width:4.2rem;flex:none">${k}</span><span class="main" style="white-space:pre-line;font-size:.92rem">${esc(k === "약력" ? `${cs.length}줄` : v)}</span><button class="mini i" data-f="${i}">복사</button></div>`).join("");
+    $("#fields").querySelectorAll("[data-f]").forEach(b => b.onclick = () => copy(F[+b.dataset.f][1], `${F[+b.dataset.f][0]}을(를) 복사했어요`));
+  };
+  fields();
+  $("#gface").onclick = () => S.me.photo ? shareFiles([dataToFile(S.me.photo, `${baseName(e)}_증명사진.jpg`)], "증명사진") : toast("👤 내 정보에서 증명사진을 넣어 주세요");
+  $("#gwork").onclick = () => w?.photo ? shareFiles([dataToFile(w.photo, `${baseName(e)}_작품사진.jpg`)], "작품사진") : toast("작품 사진이 없어요");
+  $("#png").onclick = async () => { const f = await pngFile(e); shareFiles([f], "원서").then(r => r === "saved" && toast("원서 사진을 저장했어요")); };
+  $("#pdf").onclick = async () => { const f = await pdfFile(e); if (f) shareFiles([f], "원서").then(r => r === "saved" && toast("PDF를 저장했어요")); };
+  $("#send").onclick = async () => { const f = await pdfFile(e); if (!f) return; const r = await shareFiles([f, await pngFile(e)], `${e.contest} 원서`); if (r === "saved") toast("이 기기는 바로 보내기가 안 돼서 파일로 저장했어요"); };
+  $("#pack").onclick = async () => {
+    const files = [await pdfFile(e), await pngFile(e)].filter(Boolean);
+    if (w?.photo) files.push(dataToFile(w.photo, `${baseName(e)}_작품사진.jpg`));
+    if (S.me.photo) files.push(dataToFile(S.me.photo, `${baseName(e)}_증명사진.jpg`));
+    const r = await shareFiles(files, `${e.contest} 제출 파일`);
+    if (r === "saved") toast(`${files.length}개 파일을 저장했어요. 웹하드에서 올려 주세요`);
+  };
+  for (const [id, k] of [["wu", "url"], ["wi", "id"], ["wpw", "pw"], ["wf", "folder"]]) $("#" + id).oninput = ev => { e.web[k] = ev.target.value; keep(); };
+  $("#cpi").onclick = () => e.web.id ? copy(e.web.id, "아이디를 복사했어요") : toast("아이디를 넣어 주세요");
+  $("#cpp").onclick = () => e.web.pw ? copy(e.web.pw, "비밀번호를 복사했어요") : toast("비밀번호를 넣어 주세요");
+  $("#openw").onclick = () => { const u = e.web.url.trim(); if (!u) return toast("웹하드 주소를 넣어 주세요"); window.open(/^https?:\/\//.test(u) ? u : `https://${u}`, "_blank", "noopener"); };
+  $("#st").querySelectorAll("button").forEach(b => b.onclick = () => { e.status = b.textContent; if (e.status !== "작성 중" && !e.submitted) e.submitted = today(); keep(); viewEntry(); toast(`'${e.status}'로 바꿨어요`); });
+  $("#em").oninput = ev => { e.memo = ev.target.value; keep(); };
+  $("#del").onclick = () => { if (!confirm("이 원서를 지울까요?")) return; S.entries = S.entries.filter(x => x.id !== e.id); cur = null; save(); render(); };
+}
+const careerLines = e => S.careers.filter(c => e.careers.includes(c.id)).map(c => c.text);
+const baseName = e => safeName(`${S.me.name || "이름"}_${S.works.find(w => w.id === e.workId)?.title || "작품"}`);
+
+/* ---------- 원서 그리기 (A4, 150dpi = 1240×1754) ---------- */
+const imgCache = new Map();
+function loadImg(src) {
+  if (!src) return Promise.resolve(null);
+  if (imgCache.has(src)) return imgCache.get(src);
+  const p = new Promise(ok => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => ok(null); i.src = src; });
+  imgCache.set(src, p); return p;
+}
+async function drawForm(cv, e) {
+  const g = cv.getContext("2d"), W = 1240, H = 1754, M = 70, L = 210, FONT = `"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif`;
+  const w = S.works.find(x => x.id === e.workId) || {}, me = S.me, cs = careerLines(e);
+  const [face, work] = await Promise.all([loadImg(me.photo), loadImg(w.photo)]);
+  g.fillStyle = "#fff"; g.fillRect(0, 0, W, H); g.strokeStyle = "#222"; g.fillStyle = "#111"; g.lineWidth = 2; g.textBaseline = "middle";
+  const text = (s, x, y, size = 30, bold = false, align = "left", maxW = 9999) => {
+    g.font = `${bold ? 700 : 400} ${size}px ${FONT}`; g.textAlign = align;
+    let t = String(s ?? ""); while (t && g.measureText(t).width > maxW) t = t.slice(0, -1);
+    g.fillText(t, x, y);
+  };
+  const box = (x, y, w2, h, label) => { g.strokeRect(x, y, w2, h); if (label) { g.fillStyle = "#f6f6f6"; g.fillRect(x + 1, y + 1, w2 - 2, h - 2); g.fillStyle = "#111"; text(label, x + w2 / 2, y + h / 2, 30, true, "center"); } };
+  // 제목
+  text(e.contest || "공모전 이름", W / 2, 62, 44, true, "center", W - 2 * M);
+  const R = 74, top = 110, R2 = W - M, photoW = 250, x2 = M + L, xPhoto = R2 - photoW;
+  // 위 4줄 (사진 옆)
+  const rows4 = [["성 명", me.name, true], ["소속지부", me.branch], ["분 야", me.field], ["주 소", me.address]];
+  rows4.forEach(([k, v, c], i) => { const y = top + i * R; box(M, y, L, R, k); box(x2, y, xPhoto - x2, R); text(v, c ? (x2 + xPhoto) / 2 : x2 + 20, y + R / 2, 30, false, c ? "center" : "left", xPhoto - x2 - 30); });
+  box(xPhoto, top, photoW, R * 4);
+  if (face) { const k = Math.max((photoW - 16) / face.width, (R * 4 - 16) / face.height), dw = face.width * k, dh = face.height * k; g.save(); g.beginPath(); g.rect(xPhoto + 8, top + 8, photoW - 16, R * 4 - 16); g.clip(); g.drawImage(face, xPhoto + photoW / 2 - dw / 2, top + R * 2 - dh / 2, dw, dh); g.restore(); }
+  else { g.fillStyle = "#999"; text("증명사진", xPhoto + photoW / 2, top + R * 2, 26, false, "center"); g.fillStyle = "#111"; }
+  let y = top + R * 4;
+  box(M, y, L, R + 10, "연락처"); box(x2, y, R2 - x2, R + 10); text(`휴대폰 : ${me.phone || ""}${me.email ? `    이메일 : ${me.email}` : ""}`, x2 + 20, y + (R + 10) / 2, 30, false, "left", R2 - x2 - 30); y += R + 10;
+  const half = (R2 - x2) / 2, lab2 = 160;
+  const pair = (k1, v1, k2, v2) => { box(M, y, L, R, k1); box(x2, y, half - lab2 / 2, R); text(v1, x2 + (half - lab2 / 2) / 2, y + R / 2, 30, true, "center", half - lab2 / 2 - 20);
+    const xa = x2 + half - lab2 / 2; box(xa, y, lab2, R, k2); box(xa + lab2, y, R2 - xa - lab2, R); text(v2, xa + lab2 + (R2 - xa - lab2) / 2, y + R / 2, 30, true, "center", R2 - xa - lab2 - 20); y += R; };
+  pair("작품명", w.title, "재 료", w.material); pair("규 격", w.size, "제작년도", w.year ? `${w.year}년` : "");
+  // 약력
+  const ch = Math.max(R * 2, 40 + cs.length * 48);
+  box(M, y, L, ch, "약 력"); box(x2, y, R2 - x2, ch);
+  cs.forEach((c, i) => text(`- ${c}`, x2 + 60, y + 40 + i * 48, 32, true, "left", R2 - x2 - 80));
+  y += ch;
+  // 작품 사진: 남은 칸 가득
+  const ph = H - 60 - y;
+  box(M, y, L, ph); text("작품", M + L / 2, y + ph / 2 - 20, 30, true, "center"); text("사진", M + L / 2, y + ph / 2 + 20, 30, true, "center");
+  box(x2, y, R2 - x2, ph);
+  if (work) { const bw = R2 - x2 - 30, bh = ph - 30, k = Math.min(bw / work.width, bh / work.height), dw = work.width * k, dh = work.height * k; g.drawImage(work, x2 + 15 + (bw - dw) / 2, y + 15 + (bh - dh) / 2, dw, dh); }
+  else { g.fillStyle = "#999"; text("작품 사진을 넣어 주세요", (x2 + R2) / 2, y + ph / 2, 28, false, "center"); }
+}
+async function pngFile(e) { const c = document.createElement("canvas"); c.width = 1240; c.height = 1754; await drawForm(c, e); return new Promise(ok => c.toBlob(b => ok(new File([b], `${baseName(e)}_원서.png`, { type: "image/png" })), "image/png")); }
+async function pdfFile(e) {
+  if (!window.jspdf) { await new Promise(ok => { const s = document.createElement("script"); s.src = "jspdf.umd.min.js"; s.onload = ok; s.onerror = ok; document.head.appendChild(s); }); }
+  if (!window.jspdf) { toast("PDF 도구를 불러오지 못했어요. 인터넷 연결을 확인해 주세요"); return null; }
+  const c = document.createElement("canvas"); c.width = 1240; c.height = 1754; await drawForm(c, e);
+  const doc = new window.jspdf.jsPDF({ unit: "mm", format: "a4" }); doc.addImage(c.toDataURL("image/jpeg", 0.92), "JPEG", 0, 0, 210, 297);
+  return new File([doc.output("blob")], `${baseName(e)}_원서.pdf`, { type: "application/pdf" });
+}
+
+/* ---------- 📋 접수 기록 ---------- */
+function viewLog() {
+  const list = S.entries.filter(e => e.status !== "작성 중").sort((a, b) => (b.submitted || b.created).localeCompare(a.submitted || a.created));
+  const cls = s => s === "낙선" ? "r" : s === "접수 완료" ? "o" : "g";
+  const soon = S.entries.filter(e => e.deadline && e.deadline >= today() && e.status === "작성 중").sort((a, b) => a.deadline.localeCompare(b.deadline));
+  $("#view").innerHTML = `${soon.length ? `<section class="card"><div class="t">⏰ 마감 다가오는 원서</div>${soon.map(e => `<button class="row" data-e="${e.id}" style="width:100%;border-left:0;border-right:0;border-bottom:0;background:none;text-align:left"><span class="main"><b>${esc(e.contest || "(이름 없음)")}</b><span class="sm">마감 ${md(e.deadline)} · 아직 작성 중</span></span><span class="sm">›</span></button>`).join("")}</section>` : ""}
+  <section class="card"><div class="t">📋 접수 기록 <span>${list.length}건</span></div>
+    ${list.length ? list.map(e => { const w = S.works.find(x => x.id === e.workId);
+      return `<button class="row" data-e="${e.id}" style="width:100%;border-left:0;border-right:0;border-bottom:0;background:none;text-align:left">
+        ${w?.photo ? `<img class="thumb" src="${w.photo}" alt="">` : `<span class="thumb">–</span>`}
+        <span class="main"><b>${esc(e.contest || "(이름 없음)")}</b><span class="sm">${md(e.submitted || e.created)} · ${esc(w?.title || "")}</span></span><span class="tag ${cls(e.status)}">${esc(e.status)}</span></button>`; }).join("")
+      : `<p class="sm">원서를 만들고 접수 상태를 <b>접수 완료</b>로 바꾸면 여기에 모여요.</p>`}</section>`;
+  $("#view").querySelectorAll("[data-e]").forEach(b => b.onclick = () => { cur = b.dataset.e; tab = "entry"; render(); scrollTo(0, 0); });
+}
+
+/* ---------- ⚙ 설정: 백업 ---------- */
+$("#btnSet").onclick = () => modal("⚙ 백업 · 도움말", `
+  <div class="hint ok" style="margin-bottom:10px">내 정보, 작품 사진, 원서, 웹하드 아이디는 <b>이 기기에만</b> 저장돼요. 기기를 바꾸기 전에 백업해 주세요.</div>
+  <button class="btn b-kakao" id="bk">💬 카톡으로 백업 보내기</button>
+  <div class="g2 mt"><button class="btn b-gray" id="bs">💾 파일로 저장</button><button class="btn b-gray" id="br">📂 불러오기</button></div>
+  <p class="sm" style="margin:10px 0 0;line-height:1.6">카톡 공유 창에서 <b>나와의 채팅</b>을 고르면 편해요. 되살릴 때는 카톡에서 파일을 저장한 뒤 [불러오기]로 고르세요.<br>
+  📲 홈 화면에 추가: 아이폰은 사파리 → 공유 → 홈 화면에 추가, 안드로이드는 크롬 → ⋮ → 홈 화면에 추가</p>`, (m, close) => {
+  const file = () => new File([JSON.stringify({ app: "art-entry", savedAt: new Date().toISOString(), ...S })], `공모전원서-백업-${today().replaceAll("-", "")}.json`, { type: "application/json" });
+  m.querySelector("#bk").onclick = async () => { const r = await shareFiles([file()], "공모전 원서 백업"); if (r === "saved") toast("파일로 저장했어요. 그 파일을 카톡으로 보내 주세요"); };
+  m.querySelector("#bs").onclick = () => download(file());
+  m.querySelector("#br").onclick = () => {
+    const i = document.createElement("input"); i.type = "file"; i.accept = ".json,application/json";
+    i.onchange = async () => { try { const j = JSON.parse(await i.files[0].text()); if (j.app !== "art-entry") throw 0;
+      if (!confirm(`작품 ${j.works?.length ?? 0}점, 원서 ${j.entries?.length ?? 0}건이 든 백업이에요. 지금 자료를 바꿀까요?`)) return;
+      S = { me: j.me, careers: j.careers || [], works: j.works || [], entries: j.entries || [] }; save(); close(); cur = null; render(); toast("불러왔어요"); }
+      catch { toast("공모전 원서 백업 파일이 아니에요"); } };
+    i.click();
+  };
+});
+
+render();
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>
